@@ -1,5 +1,6 @@
 package com.example.owner.studentsapp;
 
+import android.media.Image;
 import android.widget.ImageView;
 
 /**
@@ -21,7 +22,7 @@ public class Student {
     private Boolean checked;
     private String phone;
     private String address;
-    private ImageView picture;
+    private Image picture;
 
 
 
@@ -45,7 +46,7 @@ public class Student {
         return address;
     }
 
-    public ImageView getPicture() {
+    public Image getPicture() {
         return picture;
     }
 
@@ -69,10 +70,8 @@ public class Student {
         this.address = address;
     }
 
-    public void setPicture(ImageView picture) {
+    public void setPicture(Image picture) {
         this.picture = picture;
     }
 
-
-
-}
+    }

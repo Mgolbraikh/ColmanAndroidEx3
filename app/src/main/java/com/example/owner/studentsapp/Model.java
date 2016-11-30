@@ -11,7 +11,7 @@ public class Model {
     final private static Model instance = new Model();
     private Model(){
         for (int i =0;i<100;i++){
-            Student st = new Student("name " + i,i * 127,"last " + i,""+i*127);
+            Student st = new Student("name " + i,i * 127,"Address  " + i,((Integer)(i*127)).toString());
             addStudent(st);
         }
     }
