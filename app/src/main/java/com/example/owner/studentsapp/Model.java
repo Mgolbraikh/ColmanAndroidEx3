@@ -11,7 +11,7 @@ public class Model {
     final private static Model instance = new Model();
     private Model(){
         for (int i =0;i<100;i++){
-            Student st = new Student("name " + i,i * 127,"Address  " + i,((Integer)(i*127)).toString());
+            Student st = new Student("name " + i,i,"Address  " + i,((Integer)(i*127)).toString());
             addStudent(st);
         }
     }
@@ -20,7 +20,7 @@ public class Model {
         return instance;
     }
 
-    private List<Student> studentsData = new LinkedList<Student>();
+    private List<Student> studentsData = new LinkedList<>();
 
 
     public List<Student> getAllStudents(){
