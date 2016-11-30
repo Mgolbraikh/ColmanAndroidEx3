@@ -10,11 +10,13 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.List;
 
 public class StudentListActivity extends Activity {
     List<Student> studentsList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,26 +39,26 @@ public class StudentListActivity extends Activity {
         });
     }
 
-        class StudentsAdapter extends BaseAdapter {
-            @Override
-            public int getCount() {
-                return studentsList.size();
-            }
+    class StudentsAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            return studentsList.size();
+        }
 
-            @Override
-            public Object getItem(int i) {
-                return studentsList.get(i);
-            }
+        @Override
+        public Object getItem(int i) {
+            return studentsList.get(i);
+        }
 
-            @Override
-            public long getItemId(int i) {
-                return 0;
-            }
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
 
-            @Override
-            public View getView(int i, View view, ViewGroup viewGroup) {
-                if (view == null) {
-                    view = getLayoutInflater().inflate(R.layout.studentlistrow, null);
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            if (view == null) {
+                view = getLayoutInflater().inflate(R.layout.studentlistrow, null);
 //                    final CheckBox cb = (CheckBox) view.findViewById(R.id.studentRowCheckBox);
 //                    cb.setOnClickListener(new View.OnClickListener() {
 //                        @Override
@@ -68,24 +70,19 @@ public class StudentListActivity extends Activity {
 //                        }.
 //                    });
 //
-                }
-//
-//                Student st = studentsList.get(i);
-//                TextView nameTv = (TextView) view.findViewById(R.id.studentRowName);
-//                TextView idTv = (TextView) view.findViewById(R.id.studentRowId);
-//                nameTv.setText(st.getName());
-//                CheckBox cb = (CheckBox) view.findViewById(R.id.studentRowCheckBox);
-//                cb.setChecked(st.getChecked());
-//                cb.setTag(new Integer(i));
-//                idTv.setText(st.getId());
-//                Log.d("TAG","presenting row: " + i);
-//                return view;
-                    return null;
-                }
-//            }
-
-
             }
+
+            Student st = studentsList.get(i);
+            TextView nameTv = (TextView) view.findViewById(R.id.StudentName);
+            TextView idTv = (TextView) view.findViewById(R.id.StudentID);
+            nameTv.setText(st.getName());
+            //CheckBox cb = (CheckBox) view.findViewById(R.id.checkBox);
+           // cb.setChecked(st.getChecked());
+           // cb.setTag(new Integer(i));
+            idTv.setText(((Integer)st.getId()).toString());
+            return view;
         }
+    }
+}
 
 
