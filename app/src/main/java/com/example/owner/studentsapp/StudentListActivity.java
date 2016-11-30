@@ -40,6 +40,7 @@ public class StudentListActivity extends Activity {
     }
 
     class StudentsAdapter extends BaseAdapter {
+
         @Override
         public int getCount() {
             return studentsList.size();
@@ -58,7 +59,18 @@ public class StudentListActivity extends Activity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
+                final int index = i;
                 view = getLayoutInflater().inflate(R.layout.studentlistrow, null);
+                //view.setClickable(true);
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent openEdit = new Intent(StudentListActivity.this, NewStudent.class);
+                        openEdit.putExtra("id",index);
+                        startActivity(openEdit);
+
+                    }
+                });
 //                    final CheckBox cb = (CheckBox) view.findViewById(R.id.studentRowCheckBox);
 //                    cb.setOnClickListener(new View.OnClickListener() {
 //                        @Override
