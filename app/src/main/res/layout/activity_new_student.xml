@@ -20,6 +20,10 @@
                 android:id="@+id/StudentImageAdd"/>
         </TableRow>
         <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Name"/>
             <TextBox
                 android:text="TextView"
                 android:layout_width="wrap_content"
@@ -28,6 +32,10 @@
                 android:layout_weight="1" />
         </TableRow>
         <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ID"/>
             <TextBox
                 android:text="TextView"
                 android:layout_width="wrap_content"
@@ -36,6 +44,10 @@
                 android:layout_weight="1" />
         </TableRow>
         <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Phone"/>
             <TextBox
                 android:text="TextView"
                 android:layout_width="wrap_content"
@@ -44,6 +56,10 @@
                 android:layout_weight="1" />
         </TableRow>
         <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Address"/>
             <TextBox
                 android:text="TextView"
                 android:layout_width="wrap_content"
