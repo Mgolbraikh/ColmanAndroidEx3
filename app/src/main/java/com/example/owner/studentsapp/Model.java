@@ -1,5 +1,6 @@
 package com.example.owner.studentsapp;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +13,14 @@ public class Model {
     private Model(){
         for (int i =0;i<100;i++){
             Student st = new Student("name " + i,i,"Address  " + i,((Integer)(i*127)).toString());
+            if (i %3 ==0) {
+                st.setChecked(true);}
+            else
+            {
+                st.setChecked(false);
+            }
+            // TODO - set picture to students
+            // st.setPicture();
             addStudent(st);
         }
     }
@@ -22,6 +31,26 @@ public class Model {
 
     private List<Student> studentsData = new LinkedList<>();
 
+
+    /**
+     * return the student that has this id
+     *
+     * @param  id  Students id to search for
+     * @return      Student
+     * @see         Student see
+     */
+    public Student getStudent(Integer id)
+    {
+        Iterator<Student> e = this.studentsData.iterator();
+
+        for (Student st:this.studentsData   )
+        {
+            if(st.getId() ==  id)
+                return st;
+        }
+
+        return null;
+    }
 
     public List<Student> getAllStudents(){
         return studentsData;
