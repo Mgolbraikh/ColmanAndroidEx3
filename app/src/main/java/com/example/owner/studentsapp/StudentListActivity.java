@@ -28,12 +28,15 @@ public class StudentListActivity extends Activity {
         StudentsAdapter adapter = new StudentsAdapter();
         list.setAdapter(adapter);
 
+        list.setClickable(true);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("TAG", "row selected " + i);
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // Object o = ((ListView) (view)).getItemAtPosition(position);
+                // TODO Delete this debug row
+                Log.d("TAG", "row selected " + position);
                 Intent intent = new Intent(getApplicationContext(), StudentDetails.class);
-                intent.putExtra("id", studentsList.get(i).getId());
+                intent.putExtra("id", ((Integer)studentsList.get(position).getId()).toString());
                 startActivity(intent);
             }
         });
@@ -76,9 +79,9 @@ public class StudentListActivity extends Activity {
             TextView nameTv = (TextView) view.findViewById(R.id.StudentName);
             TextView idTv = (TextView) view.findViewById(R.id.StudentID);
             nameTv.setText(st.getName());
-            //CheckBox cb = (CheckBox) view.findViewById(R.id.checkBox);
-           // cb.setChecked(st.getChecked());
-           // cb.setTag(new Integer(i));
+            CheckBox cb = (CheckBox) view.findViewById(R.id.checkBoxRow);
+            cb.setChecked(st.getChecked());
+            // cb.setTag(new Integer(i));
             idTv.setText(((Integer)st.getId()).toString());
             return view;
         }
