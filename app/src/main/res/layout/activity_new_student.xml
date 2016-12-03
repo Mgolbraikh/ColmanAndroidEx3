@@ -76,14 +76,19 @@
         </TableRow>
     </TableLayout>
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="bottom"
         android:orientation="horizontal">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/StudentAddAddButton" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/StudentAddDeleteButton"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"

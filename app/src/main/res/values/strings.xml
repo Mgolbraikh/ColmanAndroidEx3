@@ -6,5 +6,7 @@
     <string name="Image">Image</string>
     <string name="Phone">Phone</string>
     <string name="Address">Address</string>
+    <string name="Edit">Edit</string>
+    <string name="AddStudent">Add Student</string>
 
 </resources>

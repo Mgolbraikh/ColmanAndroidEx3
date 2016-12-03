@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -37,6 +38,16 @@ public class StudentListActivity extends Activity {
                 Log.d("TAG", "row selected " + position);
                 Intent intent = new Intent(getApplicationContext(), StudentDetails.class);
                 intent.putExtra("id", ((Integer)studentsList.get(position).getId()).toString());
+                startActivity(intent);
+            }
+        });
+
+        Button btAddStudent = (Button) findViewById(R.id.StudentAddListviewButton);
+
+        btAddStudent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NewStudent.class);
                 startActivity(intent);
             }
         });
