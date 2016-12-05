@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class StudentDetails extends Activity {
+public class StudentDetailsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

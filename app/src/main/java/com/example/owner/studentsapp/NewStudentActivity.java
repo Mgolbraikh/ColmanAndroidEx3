@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import static com.example.owner.studentsapp.R.id.StudentImage;
 import static com.example.owner.studentsapp.R.id.StudentName;
 
-public class NewStudent extends Activity {
+public class NewStudentActivity extends Activity {
 
     private EditText StudentID;
     private EditText StudentName;
