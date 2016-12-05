@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.owner.studentsapp.StudentDetails">
+    tools:context="com.example.owner.studentsapp.StudentDetailsActivity">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,6 +22,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
         android:text="@string/Name"
         />
         <TextView
@@ -37,6 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
             android:text="@string/ID"
             />
         <TextView
@@ -52,6 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
             android:text="@string/Phone"
             />
         <TextView
@@ -67,6 +70,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
             android:text="@string/Address"
             />
         <TextView
@@ -80,6 +84,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <CheckBox
+            android:enabled="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/StudentcheckBoxView"
@@ -94,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Edit"
-            android:id="@+id/StudentEditView"
+            android:id="@+id/StudentEditButton"
             />
     </LinearLayout>
 </LinearLayout>

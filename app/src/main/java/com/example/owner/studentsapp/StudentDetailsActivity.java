@@ -6,45 +6,83 @@ import android.graphics.drawable.BitmapDrawable;
 import android.nfc.tech.NfcA;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class StudentDetailsActivity extends Activity {
 
+    Student st;
+    TextView txId;
+    TextView Name;
+    TextView Address;
+            TextView phone;
+    CheckBox checked;
+            ImageView stdImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_details);
 
         // Recieve the student
-        Intent intent = getIntent();
-        String StudentId = intent.getExtras().get("id").toString();
+        st = Model.instance().getStudent(getIntent().getExtras().getInt("id"));
 
-        // TODO  - Delete this debug row
-        Log.d("TAG","got id = " + StudentId);
+         txId = (TextView)findViewById(R.id.StudentIdView);
+         Name = (TextView) findViewById(R.id.StudentNameView);
+         Address = (TextView) findViewById(R.id.StudentAddressView);
+         phone = (TextView) findViewById(R.id.StudentPhoneView);
+         checked = (CheckBox) findViewById(R.id.StudentcheckBoxView);
+         stdImage = (ImageView) findViewById(R.id.StudentImageView);
 
-        Student st = Model.instance().getStudent(Integer.parseInt(StudentId));
+        setTextViews();
 
-        TextView txId = (TextView) findViewById(R.id.StudentIdView);
-        TextView Name = (TextView) findViewById(R.id.StudentNameView);
-        TextView Address = (TextView) findViewById(R.id.StudentAddressView);
-        TextView phone = (TextView) findViewById(R.id.StudentPhoneView);
-        CheckBox checked = (CheckBox) findViewById(R.id.StudentcheckBoxView);
-        ImageView stdImage = (ImageView) findViewById(R.id.StudentImageView);
-        //TextView phone = (ImageView) view.findViewById(R.id.StudentImageView);
+        //TODO - change the set image to work with the student png
+        stdImage.setImageResource(R.drawable.images);
 
+        findViewById(R.id.StudentEditButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent editStudent = new Intent(StudentDetailsActivity.this, StudentActivity.class);
+                editStudent.putExtra("id",st.getId());
+                startActivityForResult(editStudent,1);
+            }
+        });
+        // TODO _ display image
+        //txId.setText(st.getId());
+
+    }
+
+    /*
+     * Sets the view text
+     *
+     */
+    private void setTextViews() {
         txId.setText(Integer.toString(st.getId()));
         Name.setText(st.getName());
         Address.setText(st.getAddress());
         checked.setChecked(st.getChecked());
         phone.setText(st.getPhone());
+    }
 
-        //TODO - change the set image to work with the student png
-        stdImage.setImageResource(R.drawable.images);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case 1:
 
-        // TODO _ display image
-        //txId.setText(st.getId());
-
+                // Adding changed if needed
+                if (resultCode == RESULT_OK) {
+                    if (data.getBooleanExtra("del",false)) {
+                        getIntent().putExtra("changed", true);
+                        setResult(RESULT_OK,getIntent());
+                        finish();
+                    } else {
+                        getIntent().putExtra("changed", true);
+                        setResult(RESULT_OK,getIntent());
+                        setTextViews();
+                    }
+                }
+                break;
+        }
     }
 }
