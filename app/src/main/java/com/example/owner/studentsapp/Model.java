@@ -1,5 +1,8 @@
 package com.example.owner.studentsapp;
 
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,8 +22,8 @@ public class Model {
             {
                 st.setChecked(false);
             }
-            // TODO - set picture to students
-            // st.setPicture();
+
+            st.setPicture(BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.images));
             addStudent(st);
         }
     }

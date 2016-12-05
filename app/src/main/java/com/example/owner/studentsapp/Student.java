@@ -1,5 +1,6 @@
 package com.example.owner.studentsapp;
 
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.widget.ImageView;
 
@@ -22,7 +23,7 @@ public class Student {
     private Boolean checked;
     private String phone;
     private String address;
-    private Image picture;
+    private Bitmap picture;
 
 
 
@@ -46,7 +47,7 @@ public class Student {
         return address;
     }
 
-    public Image getPicture() {
+    public Bitmap getPicture() {
         return picture;
     }
 
@@ -70,7 +71,7 @@ public class Student {
         this.address = address;
     }
 
-    public void setPicture(Image picture) {
+    public void setPicture(Bitmap picture) {
         this.picture = picture;
     }
 

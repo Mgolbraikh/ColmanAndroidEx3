@@ -26,6 +26,8 @@ public class NewStudent extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_student);
 
+        // TODO : Show the student picture in the start the default
+
         // On create of new student
         StudentID = (EditText) findViewById(R.id.StudentIDAdd);
         StudentName = (EditText) findViewById(R.id.StudentNameAdd);
@@ -46,8 +48,6 @@ public class NewStudent extends Activity {
 
                 // Adding  checked and picture
                 st.setChecked(StudentChecked.isChecked());
-
-                // TODO : Images
 
                 Model.instance().addStudent(st);
                 Log.d("TAG", "saving student to the db");
