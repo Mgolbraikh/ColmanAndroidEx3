@@ -1,86 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_new_student"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.owner.studentsapp.NewStudent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/StudentImageAdd"
+        android:src="@drawable/images" />
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TableRow>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/StudentImageAdd"/>
-        </TableRow>
-        <TableRow>
-            <TextView
+    <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+            android:orientation="horizontal">
+     <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Name"/>
-            <TextBox
+             <EditText
                 android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/StudentNameAdd"
                 android:layout_weight="1" />
-        </TableRow>
-        <TableRow>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ID"/>
-            <TextBox
+            <EditText
                 android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/StudentIDAdd"
                 android:layout_weight="1" />
-        </TableRow>
-        <TableRow>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Phone"/>
-            <TextBox
+            <EditText
                 android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/StudentPhoneAdd"
                 android:layout_weight="1" />
-        </TableRow>
-        <TableRow>
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Address"/>
-            <TextBox
+            <EditText
                 android:text="TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/StudentAddressAdd"
                 android:layout_weight="1" />
-        </TableRow>
-        <TableRow>
-            <CheckBox
-                android:text="CheckBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/StudentcheckBoxAdd" />
-        </TableRow>
-    </TableLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+                    <CheckBox
+                        android:text="CheckBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/StudentcheckBoxAdd" />
+        </LinearLayout>
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        android:orientation="horizontal">
-
+        android:orientation="horizontal"
+        android:layout_weight="1">
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -88,10 +103,6 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/StudentAddDeleteButton"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/StudentAddCancleButton"/>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
