@@ -15,7 +15,7 @@ public class Model {
     final private static Model instance = new Model();
     private Model(){
         for (int i =0;i<100;i++){
-            Student st = new Student("name " + i,i,"Address  " + i,((Integer)(i*127)).toString());
+            Student st = new Student("name " + i,i,((Integer)(i*127)).toString(),"Address  " + i);
             if (i %3 ==0) {
                 st.setChecked(true);}
             else
@@ -57,6 +57,9 @@ public class Model {
 
     public List<Student> getAllStudents(){
         return studentsData;
+    }
+    public void deleteStudent(Student st){
+        studentsData.remove(st);
     }
 
     public void addStudent(Student item){

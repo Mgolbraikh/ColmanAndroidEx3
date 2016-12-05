@@ -17,7 +17,7 @@ import java.util.List;
 
 public class StudentListActivity extends Activity {
     List<Student> studentsList;
-
+    StudentsAdapter _adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +26,8 @@ public class StudentListActivity extends Activity {
         studentsList = Model.instance().getAllStudents();
         ListView list = (ListView) findViewById(R.id.studentlistViewview);
 
-        StudentsAdapter adapter = new StudentsAdapter();
-        list.setAdapter(adapter);
+         _adapter = new StudentsAdapter();
+        list.setAdapter(_adapter);
 
         list.setClickable(true);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -36,7 +36,7 @@ public class StudentListActivity extends Activity {
                 // Object o = ((ListView) (view)).getItemAtPosition(position);
                 // TODO Delete this debug row
                 Log.d("TAG", "row selected " + position);
-                Intent intent = new Intent(getApplicationContext(), StudentDetails.class);
+                Intent intent = new Intent(getApplicationContext(), StudentDetailsActivity.class);
                 intent.putExtra("id", ((Integer)studentsList.get(position).getId()).toString());
                 startActivity(intent);
             }
@@ -47,12 +47,22 @@ public class StudentListActivity extends Activity {
         btAddStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NewStudent.class);
+                Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
                 startActivity(intent);
             }
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch(requestCode) {
+            case 2:
+                if (resultCode == RESULT_OK && data.getBooleanExtra("changed", false)) {
+                    _adapter.notifyDataSetChanged();
+                }
+                break;
+        }
+    }
     class StudentsAdapter extends BaseAdapter {
 
         @Override
@@ -79,12 +89,13 @@ public class StudentListActivity extends Activity {
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent openEdit = new Intent(StudentListActivity.this, NewStudent.class);
-                        openEdit.putExtra("id",index);
-                        startActivity(openEdit);
+                        Intent openDetails = new Intent(StudentListActivity.this, StudentDetailsActivity.class);
+                        openDetails.putExtra("id",((Student)getItem(index)).getId());
+                        startActivityForResult(openDetails,2);
 
                     }
                 });
+                // TODO add checkbox change
 //                    final CheckBox cb = (CheckBox) view.findViewById(R.id.studentRowCheckBox);
 //                    cb.setOnClickListener(new View.OnClickListener() {
 //                        @Override
@@ -98,6 +109,7 @@ public class StudentListActivity extends Activity {
 //
             }
 
+            // TODO show image
             Student st = studentsList.get(i);
             TextView nameTv = (TextView) view.findViewById(R.id.StudentName);
             TextView idTv = (TextView) view.findViewById(R.id.StudentID);
