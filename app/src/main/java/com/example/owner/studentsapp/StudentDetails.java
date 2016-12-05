@@ -2,6 +2,7 @@ package com.example.owner.studentsapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.nfc.tech.NfcA;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +31,7 @@ public class StudentDetails extends Activity {
         TextView Address = (TextView) findViewById(R.id.StudentAddressView);
         TextView phone = (TextView) findViewById(R.id.StudentPhoneView);
         CheckBox checked = (CheckBox) findViewById(R.id.StudentcheckBoxView);
-        // TODO : display image to screen
+        ImageView stdImage = (ImageView) findViewById(R.id.StudentImageView);
         //TextView phone = (ImageView) view.findViewById(R.id.StudentImageView);
 
         txId.setText(Integer.toString(st.getId()));
@@ -38,6 +39,9 @@ public class StudentDetails extends Activity {
         Address.setText(st.getAddress());
         checked.setChecked(st.getChecked());
         phone.setText(st.getPhone());
+
+        //TODO - change the set image to work with the student png
+        stdImage.setImageResource(R.drawable.images);
 
         // TODO _ display image
         //txId.setText(st.getId());
