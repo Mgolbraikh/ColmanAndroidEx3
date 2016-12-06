@@ -34,7 +34,7 @@ public class StudentActivity extends Activity {
         // StudentChecked = ()
 
         Button save = (Button) findViewById(R.id.StudentAddAddButton);
-        if (getIntent().getExtras().get("id") != null){
+        if (getIntent().getIntExtra("id",-20) != -20){
             _currStudent = Model.instance().getStudent(getIntent().getExtras().getInt("id"));
             StudentID.setText(Integer.toString(_currStudent.getId()));
             StudentName.setText(_currStudent.getName());
@@ -53,6 +53,7 @@ public class StudentActivity extends Activity {
                 }
             });
             delButton.setVisibility(View.VISIBLE);
+
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -61,7 +62,6 @@ public class StudentActivity extends Activity {
                     _currStudent.setName(StudentName.getText().toString());
                     _currStudent.setPhone(StudentPhone.getText().toString());
                     _currStudent.setChecked(StudentChecked.isChecked());
-
                     setResult(RESULT_OK,getIntent());
                     finish();
 
@@ -83,6 +83,9 @@ public class StudentActivity extends Activity {
 
                     Model.instance().addStudent(st);
                     Log.d("TAG", "saving student to the db");
+                    getIntent().putExtra("changed",true);
+                    setResult(RESULT_OK,getIntent());
+                    finish();
                 }
             });
         }
