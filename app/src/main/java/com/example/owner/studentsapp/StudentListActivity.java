@@ -48,7 +48,7 @@ public class StudentListActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), StudentActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,2);
             }
         });
     }
