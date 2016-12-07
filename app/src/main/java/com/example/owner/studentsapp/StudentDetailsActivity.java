@@ -28,7 +28,7 @@ public class StudentDetailsActivity extends Activity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Recieve the student
+        // Receive the student
         st = Model.instance().getStudent(getIntent().getExtras().getInt("id"));
 
          txId = (TextView)findViewById(R.id.StudentIdView);
@@ -40,7 +40,6 @@ public class StudentDetailsActivity extends Activity {
 
         setTextViews();
 
-        //TODO - change the set image to work with the student png
         stdImage.setImageResource(R.drawable.images);
 
         findViewById(R.id.StudentEditButton).setOnClickListener(new View.OnClickListener() {
@@ -51,8 +50,6 @@ public class StudentDetailsActivity extends Activity {
                 startActivityForResult(editStudent,1);
             }
         });
-        // TODO _ display image
-        //txId.setText(st.getId());
 
     }
 
