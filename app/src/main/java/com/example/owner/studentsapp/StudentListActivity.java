@@ -31,22 +31,9 @@ public class StudentListActivity extends Activity {
 
          _adapter = new StudentsAdapter();
         list.setAdapter(_adapter);
-
-        list.setClickable(true);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                // Object o = ((ListView) (view)).getItemAtPosition(position);
-                // TODO Delete this debug row
-                Log.d("TAG", "row selected " + position);
-                Intent intent = new Intent(getApplicationContext(), StudentDetailsActivity.class);
-                intent.putExtra("id", ((Integer)studentsList.get(position).getId()).toString());
-                startActivity(intent);
-            }
-        });
-
         Button btAddStudent = (Button) findViewById(R.id.StudentAddListviewButton);
 
+        // Opening new student activity
         btAddStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +64,7 @@ public class StudentListActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch(requestCode) {
             case 2:
+                // Checking if update is needed
                 if (resultCode == RESULT_OK && data.getBooleanExtra("changed", false)) {
                     _adapter.notifyDataSetChanged();
                 }
@@ -103,39 +91,36 @@ public class StudentListActivity extends Activity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             if (view == null) {
-                final int index = i;
                 view = getLayoutInflater().inflate(R.layout.studentlistrow, null);
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent openDetails = new Intent(StudentListActivity.this, StudentDetailsActivity.class);
-                        openDetails.putExtra("id",((Student)getItem(index)).getId());
+                        openDetails.putExtra("id",((Student)getItem((int)view.getTag())).getId());
                         startActivityForResult(openDetails,2);
 
                     }
                 });
                 // TODO add checkbox change
-//                    final CheckBox cb = (CheckBox) view.findViewById(R.id.studentRowCheckBox);
-//                    cb.setOnClickListener(new View.OnClickListener() {
+                    final CheckBox cb = (CheckBox) view.findViewById(R.id.checkBoxRow);
+                    cb.setOnClickListener(new View.OnClickListener() {
 //                        @Override
-//                        public void onClick(View view) {
-//                            Integer index = (Integer)cb.getTag();
-//                            Student st = studentsList.get(index);
-//                            st.setChecked(!st.getChecked());
-//                            Log.d("TAG","onCheckedChanged " + index + "name " + st.getName());
-//                        }.
-//                    });
-//
+                        public void onClick(View view) {
+                            Student currStudent = (Student)getItem((int)((View)view.getParent()).getTag());
+                            currStudent.setChecked(!currStudent.getChecked());
+                        }
+                    });
             }
 
-            // TODO show image
-            Student st = studentsList.get(i);
+            // Setting tag to identify current index
+            view.setTag(i);
+            Student currStudent = (Student)getItem(i);
             TextView nameTv = (TextView) view.findViewById(R.id.StudentName);
             TextView idTv = (TextView) view.findViewById(R.id.StudentID);
-            nameTv.setText(st.getName());
+            nameTv.setText(currStudent.getName());
             CheckBox cb = (CheckBox) view.findViewById(R.id.checkBoxRow);
-            cb.setChecked(st.getChecked());
-            idTv.setText(((Integer)st.getId()).toString());
+            cb.setChecked(currStudent.getChecked());
+            idTv.setText(((Integer)currStudent.getId()).toString());
             return view;
         }
     }
