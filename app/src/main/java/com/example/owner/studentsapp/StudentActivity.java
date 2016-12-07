@@ -73,6 +73,7 @@ public class StudentActivity extends Activity {
 
 
         }else {
+            setTitle("New Student");
             save.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -110,6 +111,4 @@ public class StudentActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

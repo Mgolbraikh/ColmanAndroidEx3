@@ -105,7 +105,6 @@ public class StudentListActivity extends Activity {
             if (view == null) {
                 final int index = i;
                 view = getLayoutInflater().inflate(R.layout.studentlistrow, null);
-                //view.setClickable(true);
                 view.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -136,7 +135,6 @@ public class StudentListActivity extends Activity {
             nameTv.setText(st.getName());
             CheckBox cb = (CheckBox) view.findViewById(R.id.checkBoxRow);
             cb.setChecked(st.getChecked());
-            // cb.setTag(new Integer(i));
             idTv.setText(((Integer)st.getId()).toString());
             return view;
         }
