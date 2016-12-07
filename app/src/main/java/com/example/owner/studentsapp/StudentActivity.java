@@ -3,6 +3,7 @@ package com.example.owner.studentsapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -22,6 +23,8 @@ public class StudentActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_student);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // TODO : Show the student picture in the start the default
 
@@ -90,4 +93,23 @@ public class StudentActivity extends Activity {
             });
         }
     }
+
+
+    /*
+* This method override the button pressed back for the app
+*
+* */
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:{
+                onBackPressed();
+                break;
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
