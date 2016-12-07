@@ -6,6 +6,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.nfc.tech.NfcA;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -24,6 +25,8 @@ public class StudentDetailsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_details);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Recieve the student
         st = Model.instance().getStudent(getIntent().getExtras().getInt("id"));
@@ -53,10 +56,27 @@ public class StudentDetailsActivity extends Activity {
 
     }
 
+    @Override
+/*
+* This method override the button pressed back for the app
+*
+* */
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:{
+            onBackPressed();
+            break;
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     /*
-     * Sets the view text
-     *
-     */
+         * Sets the view text
+         *
+         */
     private void setTextViews() {
         txId.setText(Integer.toString(st.getId()));
         Name.setText(st.getName());

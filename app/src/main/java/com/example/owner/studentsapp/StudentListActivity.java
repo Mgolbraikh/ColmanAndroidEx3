@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,6 +23,8 @@ public class StudentListActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
+
+        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         studentsList = Model.instance().getAllStudents();
         ListView list = (ListView) findViewById(R.id.studentlistViewview);
@@ -52,6 +55,23 @@ public class StudentListActivity extends Activity {
             }
         });
     }
+
+    /*
+* This method override the button pressed back for the app
+*
+* */
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:{
+                onBackPressed();
+                break;
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
