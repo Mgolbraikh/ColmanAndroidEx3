@@ -26,17 +26,16 @@ public class StudentActivity extends Activity {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // TODO : Show the student picture in the start the default
-
         // On create of new student
         StudentID = (EditText) findViewById(R.id.StudentIDAdd);
         StudentName = (EditText) findViewById(R.id.StudentNameAdd);
         StudentAddress = (EditText) findViewById(R.id.StudentAddressAdd);
         StudentPhone = (EditText) findViewById(R.id.StudentPhoneAdd);
         StudentChecked = (CheckBox) findViewById(R.id.StudentcheckBoxAdd);
-        // StudentChecked = ()
 
         Button save = (Button) findViewById(R.id.StudentAddAddButton);
+
+        // Checking if edit or new
         if (getIntent().getIntExtra("id",-20) != -20){
             _currStudent = Model.instance().getStudent(getIntent().getExtras().getInt("id"));
             StudentID.setText(Integer.toString(_currStudent.getId()));
@@ -93,6 +92,13 @@ public class StudentActivity extends Activity {
                 }
             });
         }
+
+        findViewById(R.id.StudentAddCancelButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
 
